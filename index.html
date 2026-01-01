@@ -3,82 +3,79 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title><my-card></my-card></title>
+  <title>Luids</title>
   <link rel="stylesheet" href="./style.css" />
 </head>
 
 <body>
+  <!-- 背景微動畫層 -->
+  <div class="bg" aria-hidden="true"></div>
+
   <main class="wrap">
     <section class="card">
 
-      <!-- 可點擊頭像 -->
-      <a
-        href="https://github.com/Luids7"
-        target="_blank"
-        rel="noopener noreferrer"
-      >
-        <img
-          class="avatar"
-          src="./@papersculptureslooklikestatues.jpg"
-          alt="Luids avatar"
-        />
+      <!-- 左上：Discord 真實狀態（會由 script.js 更新） -->
+      <div class="status-badge" id="presence" data-status="offline" title="Discord status">
+        <span class="dot" aria-hidden="true"></span>
+        <span class="status-text" data-i18n="status_offline">Offline</span>
+      </div>
+
+      <!-- 右上：語言切換 -->
+      <button class="lang-btn" id="langBtn" type="button" aria-label="Switch language">
+        <span class="lang-pill">中 / ENG</span>
+      </button>
+
+      <!-- 頭像（hover 光擴散 + 可點） -->
+      <a class="avatar-link"
+         href="https://github.com/Luids7"
+         target="_blank"
+         rel="noopener noreferrer"
+         aria-label="Go to GitHub">
+        <img class="avatar" src="./@papersculptureslooklikestatues.jpg" alt="Luids avatar" />
       </a>
 
       <h1 class="name">Luids</h1>
-      <p class="bio">Luidsx</p>
+      <p class="bio" data-i18n="bio">Luidsx</p>
 
       <div class="links">
-
         <!-- Discord -->
-        <a
-          class="btn"
-          href="https://discord.gg/你的邀請碼"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <span class="icon" aria-hidden="true">
-            <svg viewBox="0 0 24 24">
-              <path fill="currentColor"
-                d="M19.54 5.02A16.5 16.5 0 0 0 15.75 3.8c-.18.33-.38.77-.52 1.12a15.3 15.3 0 0 0-4.46 0c-.14-.35-.35-.79-.53-1.12A16.56 16.56 0 0 0 6.46 5.02C4.1 8.5 3.45 11.9 3.7 15.26a16.8 16.8 0 0 0 5.06 2.6c.41-.55.78-1.14 1.07-1.77-.59-.22-1.16-.5-1.7-.82.14-.1.27-.21.4-.32 3.28 1.53 6.85 1.53 10.09 0 .13.11.27.22.4.32-.55.32-1.12.6-1.71.82.3.63.66 1.22 1.08 1.77a16.77 16.77 0 0 0 5.05-2.6c.3-3.9-.52-7.27-2.86-10.24Z"/>
-            </svg>
-          </span>
-          Discord
+        <a class="btn ripple"
+           href="https://discord.gg/W7c9FwrK"
+           target="_blank"
+           rel="noopener noreferrer">
+          <img class="app-icon" alt="" aria-hidden="true" src="https://cdn.simpleicons.org/discord/ffffff" />
+          <span class="btn-text" data-i18n="discord">Discord</span>
         </a>
 
         <!-- GitHub -->
-        <a
-          class="btn"
-          href="https://github.com/Luids7"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <span class="icon" aria-hidden="true">
-            <svg viewBox="0 0 24 24">
-              <path fill="currentColor"
-                d="M12 2a10 10 0 0 0-3.16 19.49c.5.09.68-.22.68-.48v-1.7c-2.77.6-3.35-1.17-3.35-1.17-.45-1.15-1.1-1.46-1.1-1.46-.9-.62.07-.61.07-.61 1 .07 1.53 1.03 1.53 1.03.89 1.52 2.34 1.08 2.91.83.09-.65.35-1.08.63-1.33-2.21-.25-4.54-1.11-4.54-4.95 0-1.1.39-2 .1-2.71 0 0 .84-.27 2.75 1.02A9.6 9.6 0 0 1 12 6.8c.85 0 1.71.11 2.51.33 1.9-1.29 2.74-1.02 2.74-1.02.55 1.4.2 2.44.1 2.71.68.75 1.09 1.7 1.09 2.86 0 3.85-2.34 4.7-4.57 4.95Z"/>
-            </svg>
-          </span>
-          GitHub
+        <a class="btn ripple"
+           href="https://github.com/Luids7"
+           target="_blank"
+           rel="noopener noreferrer">
+          <img class="app-icon" alt="" aria-hidden="true" src="https://cdn.simpleicons.org/github/ffffff" />
+          <span class="btn-text">GitHub</span>
         </a>
 
-        <!-- Instagram -->
-        <a
-          class="btn"
-          href="https://instagram.com/rexvamutrrv1"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <span class="icon" aria-hidden="true">
-            <svg viewBox="0 0 24 24">
-              <path fill="currentColor"
-                d="M7 2h10a5 5 0 0 1 5 5v10a5 5 0 0 1-5 5H7a5 5 0 0 1-5-5V7a5 5 0 0 1 5-5z"/>
-            </svg>
-          </span>
-          Instagram
+        <!-- Instagram（把你的IG帳號填上） -->
+        <a class="btn ripple"
+           href="https://instagram.com/rexvamutrruv1"
+           target="_blank"
+           rel="noopener noreferrer">
+          <img class="app-icon" alt="" aria-hidden="true" src="https://cdn.simpleicons.org/instagram/ffffff" />
+          <span class="btn-text">Instagram</span>
         </a>
 
+        <!-- All links -->
+        <a class="btn btn-secondary ripple" href="./links.html">
+          <span class="link-icon" aria-hidden="true">🔗</span>
+          <span class="btn-text" data-i18n="all_links">All links</span>
+        </a>
       </div>
+
+      <p class="footer">© <span id="y"></span> Luids</p>
     </section>
   </main>
+
+  <script src="./script.js"></script>
 </body>
 </html>
