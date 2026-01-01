@@ -56,7 +56,7 @@ function applyI18n(){
     if (dict[key]) el.textContent = dict[key];
   });
 
-  // 更新狀態字（如果已經有狀態）
+  // 狀態字（如果已經有狀態）
   if (window.__presenceState) {
     renderPresence(window.__presenceState);
   }
@@ -85,7 +85,6 @@ function wireRipple(){
 
 // ===== Discord presence via Lanyard =====
 function presenceColor(status){
-  // online / idle / dnd / offline
   switch(status){
     case "online": return "#22c55e"; // green
     case "idle": return "#f59e0b";   // amber
@@ -152,14 +151,8 @@ function connectLanyard(){
     }catch{}
   });
 
-  ws.addEventListener("close", ()=>{
-    // 斷線就顯示離線
-    renderPresence("offline");
-  });
-
-  ws.addEventListener("error", ()=>{
-    renderPresence("offline");
-  });
+  ws.addEventListener("close", ()=> renderPresence("offline"));
+  ws.addEventListener("error", ()=> renderPresence("offline"));
 }
 
 // ===== init =====
@@ -172,3 +165,4 @@ function connectLanyard(){
   applyI18n();
   connectLanyard();
 })();
+
